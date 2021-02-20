@@ -1,0 +1,36 @@
+name: flutter_movie_deep_dive_test
+description: A movie flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^3.1.0
+  json_annotation: ^3.0.0
+  flutter_bloc: ^1.0.0
+  http: ^0.12.0
+  equatable: ^0.6.1
+  introduction_screen: ^1.0.7
+  intro_slider: ^2.3.4
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  build_runner: ^1.6.7
+  json_serializable: ^3.2.2
+  test:
+  test_core:
+  mockito: ^3.0.0
+  image_test_utils: ^1.0.0
+
+flutter:
+  uses-material-design: true  
+  assets:
+   - assets/imgs/bots_logo.png
