@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
+import 'package:flutter_movie_deep_dive_test/src/services/api_operations.dart';
 
-import '../services/app_service.dart';
-import '../services/services.dart';
-import 'package:http/http.dart';
-import 'package:http/testing.dart';
 
 class UserAddForm extends StatefulWidget {
   static String tag = 'add-page';
@@ -25,11 +21,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
   void onPressedSubmit() async {
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
-      // final mockClient = MockClient((request) async {
-      //   return Response(json.encode(exampleJsonResponse), 200);
-      // });
-      final service = AppService(Client());
-      
+      final service = API_Operations();
       print("Name " + _name);
       print("Email " + _email);
       print("Mobile Number " + _mobile_number.toString());
@@ -43,11 +35,15 @@ class _UserAddFormFormState extends State<UserAddForm> {
         "phone": _mobile_number,
         "website": _website,
       };
-      String response = await service.addUser(updateData);
+      String response = await service.createUser(updateData);
       debugPrint("####################################################");
       debugPrint(response);
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text(response)));
+      final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+      _scaffoldKey.currentState.showSnackBar(
+          SnackBar(
+            content: Text("response"),
+            duration: Duration(seconds: 3),
+          ));
     }
   }
 
@@ -55,7 +51,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Add/Update User'),
+        title: Text('Add User'),
       ),
       body: Form(
         key: _formKey,

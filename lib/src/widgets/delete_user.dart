@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_deep_dive_test/src/services/api_operations.dart';
 
 class DeleteUser extends StatefulWidget {
   static String tag = 'deleteuser-page';
@@ -9,15 +10,18 @@ class DeleteUser extends StatefulWidget {
 class _DeleteUserState extends State<DeleteUser> {
   final _formKey = GlobalKey<FormState>();
   var _passKey = GlobalKey<FormFieldState>();
+  final service = API_Operations();
+  final globalKey = GlobalKey<ScaffoldState>();
 
   int _id = 0;
   bool _termsChecked = true;
 
-  void onPressedSubmit() {
+  void onPressedSubmit() async {
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
-      print("Mobile Number " + _id.toString());
+      print("ID" + _id.toString());
       print("Termschecked " + _termsChecked.toString());
+      String response = await service.deleteUser(_id);
       Scaffold.of(context)
           .showSnackBar(SnackBar(content: Text('Form Submitted')));
     }
@@ -26,6 +30,7 @@ class _DeleteUserState extends State<DeleteUser> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: globalKey,
       appBar: AppBar(
         title: Text('Delete User'),
       ),
@@ -35,6 +40,7 @@ class _DeleteUserState extends State<DeleteUser> {
           children: getFormWidget(),
         ),
       ),
+
     );
   }
 
