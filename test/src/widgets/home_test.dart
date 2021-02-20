@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_deep_dive_test/src/blocs/blocs.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/models.dart';
 import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
 import 'package:flutter_movie_deep_dive_test/src/providers/providers.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/widgets.dart';

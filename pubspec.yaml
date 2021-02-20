@@ -29,8 +29,14 @@ dev_dependencies:
   test_core:
   mockito: ^3.0.0
   image_test_utils: ^1.0.0
+  flutter_launcher_icons:
 
 flutter:
   uses-material-design: true  
   assets:
    - assets/imgs/bots_logo.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/imgs/bots_logo.png"

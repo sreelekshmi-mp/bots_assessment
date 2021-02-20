@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
 
-class UserUpdateForm extends StatefulWidget {
-  static String tag = 'update-page';
+import '../services/app_service.dart';
+import '../services/services.dart';
+import 'package:http/http.dart';
+import 'package:http/testing.dart';
+
+class UserAddForm extends StatefulWidget {
+  static String tag = 'add-page';
   @override
-  _UserUpdateFormFormState createState() => new _UserUpdateFormFormState();
+  _UserAddFormFormState createState() => new _UserAddFormFormState();
 }
 
-class _UserUpdateFormFormState extends State<UserUpdateForm> {
+class _UserAddFormFormState extends State<UserAddForm> {
   final _formKey = GlobalKey<FormState>();
   var _passKey = GlobalKey<FormFieldState>();
-  int _id = 0;
   String _user_name = '';
   String _name = '';
   String _email = '';
@@ -17,10 +22,14 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
   String _website = '';
   bool _termsChecked = true;
 
-  void onPressedSubmit() {
+  void onPressedSubmit() async {
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
-      print("ID " + _id.toString());
+      // final mockClient = MockClient((request) async {
+      //   return Response(json.encode(exampleJsonResponse), 200);
+      // });
+      final service = AppService(Client());
+      
       print("Name " + _name);
       print("Email " + _email);
       print("Mobile Number " + _mobile_number.toString());
@@ -28,30 +37,17 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
       print("Termschecked " + _termsChecked.toString());
       Map updateData =
       {
-        "id": _id,
         "name": _name,
         "username": _user_name,
         "email": _email,
-        "address": {
-          "street": "N.A",
-          "suite": "N.A",
-          "city": "N.A",
-          "zipcode": "N.A",
-          "geo": {
-            "lat": "N.A",
-            "lng": "N.A"
-          }
-        },
         "phone": _mobile_number,
         "website": _website,
-        "company": {
-          "name": "Sample Company",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets"
-        }
       };
+      String response = await service.addUser(updateData);
+      debugPrint("####################################################");
+      debugPrint(response);
       Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Form Submitted')));
+          .showSnackBar(SnackBar(content: Text(response)));
     }
   }
 
@@ -71,20 +67,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
   }
 
   List<Widget> getFormWidget() {
-    List<Widget> formWidget = new List();
-
-    formWidget.add(new TextFormField(
-        decoration: InputDecoration(labelText: 'Enter ID', hintText: 'ID'),
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter a name';
-          }
-        },
-        onSaved: (value) {
-          setState(() {
-            _id = int.tryParse(value);
-          });
-        }));
+    List<Widget> formWidget = [];
 
     formWidget.add(new TextFormField(
         decoration: InputDecoration(labelText: 'Enter Name', hintText: 'Name'),
@@ -160,7 +143,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
       )
           : null,
       title: new Text(
-        'I agree to add/update user to server.',
+        'I agree to add user to server.',
       ),
       controlAffinity: ListTileControlAffinity.leading,
     ));
@@ -168,7 +151,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
     formWidget.add(new RaisedButton(
         color: Colors.blue,
         textColor: Colors.white,
-        child: new Text('Add/Update User'),
+        child: new Text('Add User'),
         onPressed: onPressedSubmit));
 
     return formWidget;

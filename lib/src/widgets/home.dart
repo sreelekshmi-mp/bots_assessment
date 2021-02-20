@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_deep_dive_test/src/blocs/app_event.dart';
 import 'package:flutter_movie_deep_dive_test/src/blocs/blocs.dart';
+import 'package:flutter_movie_deep_dive_test/src/widgets/add_user.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/delete_user.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/app_intro.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/update_user.dart';
@@ -51,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(title: Text('Add Uer Data'),
               onTap: () {
-                Navigator.of(context).pushNamed(UserAddUpdateForm.tag);
+                Navigator.of(context).pushNamed(UserAddForm.tag);
                 // Update the state of the app
                 // ...
               },
             ),
             ListTile(title: Text('Update Uer Data'),
               onTap: () {
-                Navigator.of(context).pushNamed(UserAddUpdateForm.tag);
+                Navigator.of(context).pushNamed(UserUpdateForm.tag);
                 // Update the state of the app
                 // ...
               },
@@ -103,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           // Is Loaded
           if (state is AppLoaded) {
+            print(UsersList(response: state.response));
             return UsersList(response: state.response);
           }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_deep_dive_test/src/blocs/blocs.dart';
 import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
+import 'package:flutter_movie_deep_dive_test/src/widgets/add_user.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/app_intro.dart';
@@ -13,8 +14,9 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     IntroScreen.tag: (context) => IntroScreen(),
     MyHomePage.tag: (context) => MyHomePage(),
-    UserAddUpdateForm.tag: (context) => UserAddUpdateForm(),
-    DeleteUser.tag: (context) => DeleteUser()
+    UserUpdateForm.tag: (context) => UserUpdateForm(),
+    DeleteUser.tag: (context) => DeleteUser(),
+    UserAddForm.tag: (context) => UserAddForm()
   };
   @override
   Widget build(BuildContext context) {

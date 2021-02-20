@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/models.dart';
 import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
 import 'package:flutter_movie_deep_dive_test/src/widgets/user_card.dart';
 
