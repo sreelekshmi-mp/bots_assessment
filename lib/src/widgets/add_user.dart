@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_deep_dive_test/src/services/api_operations.dart';
+import 'package:flutter_movie_deep_dive_test/src/widgets/alert_msg.dart';
 
 
 class UserAddForm extends StatefulWidget {
@@ -22,6 +23,8 @@ class _UserAddFormFormState extends State<UserAddForm> {
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
       final service = API_Operations();
+
+
       print("Name " + _name);
       print("Email " + _email);
       print("Mobile Number " + _mobile_number.toString());
@@ -36,14 +39,17 @@ class _UserAddFormFormState extends State<UserAddForm> {
         "website": _website,
       };
       String response = await service.createUser(updateData);
-      debugPrint("####################################################");
-      debugPrint(response);
-      final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-      _scaffoldKey.currentState.showSnackBar(
-          SnackBar(
-            content: Text("response"),
-            duration: Duration(seconds: 3),
-          ));
+      showAlertDialog(context, response);
+      // debugPrint("####################################################");
+      // // debugPrint(response);
+      // final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+      // scaffoldKey.currentState.showSnackBar(
+      //     SnackBar(
+      //       content: Text("response"),
+      //       duration: Duration(seconds: 3),
+      //     ));
+      // // Scaffold.of(context)
+      // //     .showSnackBar(SnackBar(content: Text(response)));
     }
   }
 
@@ -51,7 +57,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Add User'),
+        title: Text('Add/Update User'),
       ),
       body: Form(
         key: _formKey,
@@ -104,11 +110,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
     formWidget.add(new TextFormField(
         decoration: InputDecoration(labelText: 'Enter Phone Number', hintText: 'Phone Number'),
         keyboardType: TextInputType.number,
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter Phone Number';
-          }
-        },
+        validator: phoneNumberValidator,
         onSaved: (value) {
           setState(() {
             _mobile_number = int.tryParse(value);
@@ -151,19 +153,5 @@ class _UserAddFormFormState extends State<UserAddForm> {
         onPressed: onPressedSubmit));
 
     return formWidget;
-  }
-
-  String validateEmail(String value) {
-    if (value.isEmpty) {
-      return 'Please enter mail';
-    }
-
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
   }
 }

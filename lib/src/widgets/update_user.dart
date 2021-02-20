@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_deep_dive_test/src/services/api_operations.dart';
+import 'package:flutter_movie_deep_dive_test/src/widgets/alert_msg.dart';
 
 class UserUpdateForm extends StatefulWidget {
   static String tag = 'update-page';
@@ -17,9 +19,10 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
   String _website = '';
   bool _termsChecked = true;
 
-  void onPressedSubmit() {
+  void onPressedSubmit() async{
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
+      final service = API_Operations();
       print("ID " + _id.toString());
       print("Name " + _name);
       print("Email " + _email);
@@ -32,26 +35,13 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
         "name": _name,
         "username": _user_name,
         "email": _email,
-        "address": {
-          "street": "N.A",
-          "suite": "N.A",
-          "city": "N.A",
-          "zipcode": "N.A",
-          "geo": {
-            "lat": "N.A",
-            "lng": "N.A"
-          }
-        },
         "phone": _mobile_number,
         "website": _website,
-        "company": {
-          "name": "Sample Company",
-          "catchPhrase": "Multi-layered client-server neural-net",
-          "bs": "harness real-time e-markets"
-        }
       };
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Form Submitted')));
+      String response = await service.createUser(updateData);
+      showAlertDialog(context, response);
+      // Scaffold.of(context)
+      //     .showSnackBar(SnackBar(content: Text('Form Submitted')));
     }
   }
 
@@ -59,7 +49,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Add/Update User'),
+        title: Text('Update User'),
       ),
       body: Form(
         key: _formKey,
@@ -77,7 +67,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
         decoration: InputDecoration(labelText: 'Enter ID', hintText: 'ID'),
         validator: (value) {
           if (value.isEmpty) {
-            return 'Enter a name';
+            return 'Enter an ID';
           }
         },
         onSaved: (value) {
@@ -88,11 +78,6 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
 
     formWidget.add(new TextFormField(
         decoration: InputDecoration(labelText: 'Enter Name', hintText: 'Name'),
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter a name';
-          }
-        },
         onSaved: (value) {
           setState(() {
             _name = value;
@@ -101,11 +86,6 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
 
     formWidget.add(new TextFormField(
         decoration: InputDecoration(labelText: 'Enter UserName', hintText: 'UserName'),
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter a username';
-          }
-        },
         onSaved: (value) {
           setState(() {
             _user_name = value;
@@ -125,11 +105,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
     formWidget.add(new TextFormField(
         decoration: InputDecoration(labelText: 'Enter Phone Number', hintText: 'Phone Number'),
         keyboardType: TextInputType.number,
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter Phone Number';
-          }
-        },
+        validator: phoneNumberValidator,
         onSaved: (value) {
           setState(() {
             _mobile_number = int.tryParse(value);
@@ -140,11 +116,7 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
         key: _passKey,
         decoration:
         InputDecoration(labelText: 'Enter Website', hintText: 'Website'),
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Enter Website';
-          }
-        }));
+        ));
 
     formWidget.add(CheckboxListTile(
       value: _termsChecked,
@@ -168,23 +140,11 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
     formWidget.add(new RaisedButton(
         color: Colors.blue,
         textColor: Colors.white,
-        child: new Text('Add/Update User'),
+        child: new Text('Update User'),
         onPressed: onPressedSubmit));
 
     return formWidget;
   }
 
-  String validateEmail(String value) {
-    if (value.isEmpty) {
-      return 'Please enter mail';
-    }
 
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
-  }
 }
