@@ -2,11 +2,9 @@
 
 Testing Flutter Applications
 
-## Don't forget to test your Dart Code
+## Building and Application and Testing.
 
-Testing is one of the most important things during the software development.
-
-One of the beauty of the Dart Ecosystem, is the way developers can easily test their code.
+Have build an application with operations on User data and have tested as following.
 
 Flutter has 3 types of tests.
 
@@ -16,6 +14,7 @@ Flutter has 3 types of tests.
 
 ## Purpose
 
-Through a flutter movie application, this repository is the code source of my [codelab](https://codelabs-bwnyasse-net.web.app/flutter_testing_tutorial.html#0) that provides a step by step approach for testing your flutter application.
+Through a flutter bots application, I have demonstrated capability of adjusting to the technical environment, have demonstrate the will to test every possible scenario
+have followed clean-coding field, developed and tested in scaling manner.
 
 
