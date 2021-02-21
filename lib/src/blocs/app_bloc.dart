@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter_movie_deep_dive_test/src/blocs/blocs.dart';
-import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
+import 'package:bots_app/src/blocs/blocs.dart';
+import 'package:bots_app/src/services/services.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final AppService service;

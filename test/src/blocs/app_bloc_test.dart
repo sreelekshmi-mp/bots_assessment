@@ -1,6 +1,5 @@
-import 'package:flutter_movie_deep_dive_test/src/blocs/blocs.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/models.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
+import 'package:bots_app/src/blocs/blocs.dart';
+import 'package:bots_app/src/models/users.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

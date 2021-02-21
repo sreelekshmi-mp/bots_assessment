@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
-import 'package:flutter_movie_deep_dive_test/src/widgets/widgets.dart';
+import 'package:bots_app/src/models/users.dart';
+import 'package:bots_app/src/widgets/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_test_utils/image_test_utils.dart';
 

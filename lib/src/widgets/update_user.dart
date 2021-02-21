@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/services/api_operations.dart';
-import 'package:flutter_movie_deep_dive_test/src/widgets/alert_msg.dart';
+import 'package:bots_app/src/services/api_operations.dart';
+import 'package:bots_app/src/widgets/alert_msg.dart';
 
 class UserUpdateForm extends StatefulWidget {
   static String tag = 'update-page';

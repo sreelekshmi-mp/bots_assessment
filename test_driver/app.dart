@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
-import 'package:flutter_movie_deep_dive_test/src/app.dart';
-import 'package:flutter_movie_deep_dive_test/src/providers/providers.dart';
+import 'package:bots_app/src/app.dart';
+import 'package:bots_app/src/providers/providers.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 

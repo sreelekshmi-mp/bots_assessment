@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
+import 'package:bots_app/src/models/users.dart';
 
 class UserCard extends StatelessWidget {
   final User data;

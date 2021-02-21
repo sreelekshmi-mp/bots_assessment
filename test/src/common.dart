@@ -1,4 +1,4 @@
-import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
+import 'package:bots_app/src/services/services.dart';
 import 'package:mockito/mockito.dart';
 
 class AppServiceMock extends Mock implements AppService {}

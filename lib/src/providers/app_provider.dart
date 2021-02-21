@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' show Client;
-import 'package:flutter_movie_deep_dive_test/src/services/services.dart';
+import 'package:bots_app/src/services/services.dart';
 
 import 'package:provider/provider.dart';
 

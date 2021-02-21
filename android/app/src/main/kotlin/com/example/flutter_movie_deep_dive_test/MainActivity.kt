@@ -1,4 +1,4 @@
-package com.example.flutter_movie_deep_dive_test
+package com.example.bots_app
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity

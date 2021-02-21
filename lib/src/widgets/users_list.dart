@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
-import 'package:flutter_movie_deep_dive_test/src/widgets/user_card.dart';
+import 'package:bots_app/src/models/users.dart';
+import 'package:bots_app/src/widgets/user_card.dart';
 
 class UsersList extends StatelessWidget {
   final UsersResponse response;

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_movie_deep_dive_test/src/models/users.dart';
+import 'package:bots_app/src/models/users.dart';
 import 'package:http/http.dart' show Client;
 
 class LoadUsersException implements Exception {
