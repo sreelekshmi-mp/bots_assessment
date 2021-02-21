@@ -50,21 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 // ...
               },
             ),
-            ListTile(title: Text('Add Uer Data'),
+            ListTile(title: Text('Add User Data'),
               onTap: () {
                 Navigator.of(context).pushNamed(UserAddForm.tag);
                 // Update the state of the app
                 // ...
               },
             ),
-            ListTile(title: Text('Update Uer Data'),
+            ListTile(title: Text('Update User Data'),
               onTap: () {
                 Navigator.of(context).pushNamed(UserUpdateForm.tag);
                 // Update the state of the app
                 // ...
               },
             ),
-            ListTile(title: Text('Delete Uer Data'),
+            ListTile(title: Text('Delete User Data'),
               onTap: () {
                 Navigator.of(context).pushNamed(DeleteUser.tag);
                 // Update the state of the app

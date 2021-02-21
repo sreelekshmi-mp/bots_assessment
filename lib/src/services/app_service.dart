@@ -11,12 +11,6 @@ class LoadUsersException implements Exception {
   LoadUsersException(this.message);
 }
 
-// class AddUsersException implements Exception {
-//   final message;
-//
-//   AddUsersException(this.message);
-// }
-
 class AppService {
   final Client client;
   final api = 'https://jsonplaceholder.typicode.com';
@@ -71,7 +65,6 @@ class AppService {
       return "User Creation Failed";
     }
     response.transform(utf8.decoder).listen((contents) {
-      debugPrint(contents);
     });
     return "User Creation Unsuccessful";
   }

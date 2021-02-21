@@ -61,9 +61,6 @@ class API_Operations {
     request.headers.contentType = ContentType.json;
     request.write(jsonEncode(jsonData));
     HttpClientResponse response = await request.close();
-    debugPrint("#############");
-    debugPrint(response.statusCode.toString());
-    debugPrint("#############");
     if(response.statusCode == 201){
       return "User created successfully";// $user.id";
     }else{

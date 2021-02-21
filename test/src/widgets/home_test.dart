@@ -63,17 +63,6 @@ void main() {
             ),
           ),
         );
-        //
-        // Finder textFinder = find.byType(UsersList);
-        // expect(textFinder, findsOneWidget);
-        // Finder textFinder1 = find.byType(ListView);
-        // expect(textFinder1, findsOneWidget);
-        // debugPrint("#################################");
-        // debugPrint(textFinder1.toString());
-        // Finder textFinder2 = find.text('Bots App Tutorial');
-        // expect(textFinder2, findsOneWidget);
-        // debugPrint("#################################");
-        // debugPrint(textFinder2.toString());
       });
     });
 

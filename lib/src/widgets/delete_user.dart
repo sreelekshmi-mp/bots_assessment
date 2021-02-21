@@ -12,6 +12,8 @@ class _DeleteUserState extends State<DeleteUser> {
   final _formKey = GlobalKey<FormState>();
   var _passKey = GlobalKey<FormFieldState>();
   final service = API_Operations();
+  final mainScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
 
   int _id = 0;
   bool _termsChecked = true;
@@ -23,24 +25,23 @@ class _DeleteUserState extends State<DeleteUser> {
       print("Termschecked " + _termsChecked.toString());
       String response = await service.deleteUser(_id);
       showAlertDialog(context, response);
-      // Scaffold.of(context)
-      //     .showSnackBar(SnackBar(content: Text('Form Submitted')));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      // key: globalKey,
+      key: mainScaffoldMessengerKey,
       appBar: AppBar(
         title: Text('Delete User'),
       ),
       body: Form(
         key: _formKey,
         child: new ListView(
-          children: getFormWidget(),
+          children: getFormWidget()
         ),
       ),
+
 
     );
   }
@@ -87,7 +88,18 @@ class _DeleteUserState extends State<DeleteUser> {
         textColor: Colors.white,
         child: new Text('Delete User'),
         onPressed: onPressedSubmit));
-
+    formWidget.add(new RaisedButton(
+      textColor: Colors.red,
+      child: Text('Click to know about Delete Operation'),
+      onPressed: (){
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("The delete operation is used to delete the existing user with the help of ID and it cannot be undone."
+                "The operation uses the server https://jsonplaceholder.typicode.com/ and operates on user Data.",
+              textAlign: TextAlign.center, style: TextStyle(fontSize: 14.0, fontWeight:
+              FontWeight.bold),), duration: Duration(seconds: 6), backgroundColor: Colors.blue,)
+        );
+      },
+    ),);
     return formWidget;
   }
 }

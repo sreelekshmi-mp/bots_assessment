@@ -23,8 +23,6 @@ class _UserAddFormFormState extends State<UserAddForm> {
     if (_formKey.currentState.validate() && _termsChecked) {
       _formKey.currentState.save();
       final service = API_Operations();
-
-
       print("Name " + _name);
       print("Email " + _email);
       print("Mobile Number " + _mobile_number.toString());
@@ -40,16 +38,6 @@ class _UserAddFormFormState extends State<UserAddForm> {
       };
       String response = await service.createUser(updateData);
       showAlertDialog(context, response);
-      // debugPrint("####################################################");
-      // // debugPrint(response);
-      // final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-      // scaffoldKey.currentState.showSnackBar(
-      //     SnackBar(
-      //       content: Text("response"),
-      //       duration: Duration(seconds: 3),
-      //     ));
-      // // Scaffold.of(context)
-      // //     .showSnackBar(SnackBar(content: Text(response)));
     }
   }
 
@@ -151,6 +139,18 @@ class _UserAddFormFormState extends State<UserAddForm> {
         textColor: Colors.white,
         child: new Text('Add User'),
         onPressed: onPressedSubmit));
+    formWidget.add(new RaisedButton(
+      textColor: Colors.red,
+      child: Text('Click to know about Add Operation'),
+      onPressed: (){
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("The Add operation is used to add a new user with given details and is can be updated with Updated operation, can also be undone with delete operation with specific ID"
+                "The operation uses the server https://jsonplaceholder.typicode.com/ and operates on user Data.",
+              textAlign: TextAlign.center, style: TextStyle(fontSize: 14.0, fontWeight:
+              FontWeight.bold),), duration: Duration(seconds: 6), backgroundColor: Colors.blue,)
+        );
+      },
+    ),);
 
     return formWidget;
   }

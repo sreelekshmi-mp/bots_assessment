@@ -40,8 +40,6 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
       };
       String response = await service.createUser(updateData);
       showAlertDialog(context, response);
-      // Scaffold.of(context)
-      //     .showSnackBar(SnackBar(content: Text('Form Submitted')));
     }
   }
 
@@ -142,7 +140,18 @@ class _UserUpdateFormFormState extends State<UserUpdateForm> {
         textColor: Colors.white,
         child: new Text('Update User'),
         onPressed: onPressedSubmit));
-
+    formWidget.add(new RaisedButton(
+      textColor: Colors.red,
+      child: Text('Click to know about Update Operation'),
+      onPressed: (){
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("The Update operation is used to update a user with given details."
+                "The operation uses the server https://jsonplaceholder.typicode.com/ and operates on user Data.",
+              textAlign: TextAlign.center, style: TextStyle(fontSize: 14.0, fontWeight:
+              FontWeight.bold),), duration: Duration(seconds: 6), backgroundColor: Colors.blue,)
+        );
+      },
+    ),);
     return formWidget;
   }
 
