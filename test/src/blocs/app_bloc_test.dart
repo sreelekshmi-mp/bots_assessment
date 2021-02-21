@@ -13,7 +13,7 @@ main() {
   setUp(() {
     serviceMock = AppServiceMock();
     appBloc = AppBloc(service: serviceMock);
-    response = UsersResponse.fromJson(exampleJsonResponse, exampleJsonResponse["results"]);
+    response = UsersResponse.fromJson(exampleJsonResponse[0], exampleJsonResponse);
   });
 
   tearDown(() {

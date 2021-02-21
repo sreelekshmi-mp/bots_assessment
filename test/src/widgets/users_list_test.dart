@@ -10,7 +10,7 @@ void main() {
   UsersResponse exampleResponse;
 
   setUp(() {
-    exampleResponse = UsersResponse.fromJson(exampleJsonResponse2, exampleJsonResponse2["results"]);
+    exampleResponse = UsersResponse.fromJson(exampleJsonResponse2[0], exampleJsonResponse2);
   });
 
   testWidgets('Display Movies List', (WidgetTester tester) async {

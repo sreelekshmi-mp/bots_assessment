@@ -8,7 +8,11 @@ import 'package:http/http.dart' show Response, delete, get;
 
 class API_Operations {
 
-  final base_url = 'https://jsonplaceholder.typicode.com/users';
+  String base_url = 'https://jsonplaceholder.typicode.com/users';
+
+  mock_url(String base_url){
+    this.base_url = base_url;
+  }
 
   Future<List<User>> getUser() async {
     Response res = await get(Uri.parse(base_url));

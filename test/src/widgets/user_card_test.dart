@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bots_app/src/models/models.dart';
 import 'package:bots_app/src/models/users.dart';
 import 'package:bots_app/src/widgets/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,7 +11,7 @@ void main() {
   User user;
 
   setUp(() {
-    exampleResponse = UsersResponse.fromJson(exampleJsonResponse, exampleJsonResponse["results"]);
+    exampleResponse = UsersResponse.fromJson(exampleJsonResponse[0], exampleJsonResponse);
     user = exampleResponse.users.first;
   });
 

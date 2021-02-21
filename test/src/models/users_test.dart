@@ -5,7 +5,7 @@ main() {
   group('user.name', () {
     test('user name is null', () {
       User user = User();
-     expect(user.name, equals(Null));
+     expect(user.name, equals(null));
     });
 
     test('UserName is valid', () {

@@ -6,8 +6,8 @@ class AppServiceMock extends Mock implements AppService {}
 ///
 /// Example JSON Response from the API : https://jsonplaceholder.typicode.com/users
 ///
-final exampleJsonResponse = {
-  "results": [
+final exampleJsonResponse =
+  [
   {
     "id": 11,
     "name": "Leanne ",
@@ -30,14 +30,13 @@ final exampleJsonResponse = {
       "catchPhrase": "Multi-layered client-server neural-net",
       "bs": "harness real-time e-markets"
     }
-  },],
-};
+  },];
 
 ///
 /// Another Example JSON Response from the API : https://jsonplaceholder.typicode.com/users
 ///
-final exampleJsonResponse2 = {
-  "results": [
+final exampleJsonResponse2 =
+  [
     {
       "id": 200,
       "name": "Sree lekshmi",
@@ -84,5 +83,4 @@ final exampleJsonResponse2 = {
         "bs": "e-enable strategic applications"
       }
     },
-  ],
-};
+  ];
