@@ -62,9 +62,9 @@ class API_Operations {
     request.write(jsonEncode(jsonData));
     HttpClientResponse response = await request.close();
     if(response.statusCode == 201){
-      return "User created successfully";// $user.id";
+      return "User Updated successfully";// $user.id";
     }else{
-      return "Creation Unsuccessful";
+      return "Updation Unsuccessful";
     }
   }
 

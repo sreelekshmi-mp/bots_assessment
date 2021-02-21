@@ -50,6 +50,7 @@ class _DeleteUserState extends State<DeleteUser> {
     List<Widget> formWidget = new List();
 
     formWidget.add(new TextFormField(
+        key: Key('del_textfield_id'),
         decoration: InputDecoration(labelText: 'Enter ID to delete', hintText: 'ID'),
         keyboardType: TextInputType.number,
         validator: (value) {
@@ -65,6 +66,7 @@ class _DeleteUserState extends State<DeleteUser> {
 
 
     formWidget.add(CheckboxListTile(
+      key: Key('del_agree_checkbox'),
       value: _termsChecked,
       onChanged: (value) {
         setState(() {
@@ -84,6 +86,7 @@ class _DeleteUserState extends State<DeleteUser> {
     ));
 
     formWidget.add(new RaisedButton(
+        key: Key('del_submit'),
         color: Colors.blue,
         textColor: Colors.white,
         child: new Text('Delete User'),

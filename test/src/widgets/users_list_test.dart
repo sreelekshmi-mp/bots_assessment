@@ -25,15 +25,15 @@ void main() {
         ),
       );
 
-      Finder movieFinder = find.byType(UserCard);
-      expect(movieFinder, findsNWidgets(2));
+      Finder userFinder = find.byType(UserCard);
+      expect(userFinder, findsNWidgets(2));
 
       // Expect movie card from exampleJson
-      movieFinder = find.byKey(Key("1"));
-      expect(movieFinder, findsOneWidget);
+      userFinder = find.byKey(Key("200"));
+      expect(userFinder, findsOneWidget);
 
-      movieFinder = find.byKey(Key("2"));
-      expect(movieFinder, findsOneWidget);
+      userFinder = find.byKey(Key("300"));
+      expect(userFinder, findsOneWidget);
     });
   });
 }

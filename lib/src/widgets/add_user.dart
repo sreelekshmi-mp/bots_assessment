@@ -60,6 +60,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
     List<Widget> formWidget = [];
 
     formWidget.add(new TextFormField(
+        key: Key('add_nameField'),
         decoration: InputDecoration(labelText: 'Enter Name', hintText: 'Name'),
         validator: (value) {
           if (value.isEmpty) {
@@ -73,6 +74,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
         }));
 
     formWidget.add(new TextFormField(
+        key: Key('add_userNameField'),
         decoration: InputDecoration(labelText: 'Enter UserName', hintText: 'UserName'),
         validator: (value) {
           if (value.isEmpty) {
@@ -85,8 +87,8 @@ class _UserAddFormFormState extends State<UserAddForm> {
           });
         }));
     formWidget.add(new TextFormField(
-        decoration:
-        InputDecoration(labelText: 'Enter Email', hintText: 'Email'),
+        key: Key('add_emailField'),
+        decoration: InputDecoration(labelText: 'Enter Email', hintText: 'Email'),
         keyboardType: TextInputType.emailAddress,
         validator: validateEmail,
         onSaved: (value) {
@@ -96,6 +98,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
         }));
 
     formWidget.add(new TextFormField(
+        key: Key('add_phoneNoField'),
         decoration: InputDecoration(labelText: 'Enter Phone Number', hintText: 'Phone Number'),
         keyboardType: TextInputType.number,
         validator: phoneNumberValidator,
@@ -106,7 +109,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
         }));
 
     formWidget.add(new TextFormField(
-        key: _passKey,
+        key: Key('add_websiteField'),
         decoration:
         InputDecoration(labelText: 'Enter Website', hintText: 'Website'),
         validator: (value) {
@@ -116,6 +119,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
         }));
 
     formWidget.add(CheckboxListTile(
+      key: Key('add_agree_checkbox'),
       value: _termsChecked,
       onChanged: (value) {
         setState(() {
@@ -135,6 +139,7 @@ class _UserAddFormFormState extends State<UserAddForm> {
     ));
 
     formWidget.add(new RaisedButton(
+        key: Key('add_submit'),
         color: Colors.blue,
         textColor: Colors.white,
         child: new Text('Add User'),
